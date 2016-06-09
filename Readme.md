@@ -4,5 +4,6 @@
 * Run npm install 
 * Run webpack
 * Run node server.js to test in localhost
+Made with love.
 
 
