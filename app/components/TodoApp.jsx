@@ -4,7 +4,7 @@ var moment = require('moment');
 
 import TodoList from 'TodoList';
 import AddTodo from 'AddTodo';
-var TodoSearch = require('TodoSearch');
+import TodoSearch from 'TodoSearch';
 var TodoAPI = require('TodoAPI');
 
 var TodoApp = React.createClass({
@@ -37,7 +37,7 @@ var TodoApp = React.createClass({
       if (todo.id === id){
         todo.completed = !todo.completed;
         todo.completedAt = todo.completed ? moment().unix() : undefined;
-      } 
+      }
       return todo;
     });
     this.setState({todos: updatedTodos});
@@ -51,7 +51,7 @@ var TodoApp = React.createClass({
   render: function () {
     var {todos, showCompleted, searchText} = this.state;
     var filterTodos = TodoAPI.filterTodos(todos, showCompleted, searchText);
-    
+
     return (
       <div>
         <h1 className="page-title">Todo App</h1>
