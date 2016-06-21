@@ -14,8 +14,8 @@ store.subscribe(() => {
   TodoAPI.setTodos(state.todos);
 });
 
-var initalTodos = TodoAPI.getTodos();
-store.dispatch(actions.addTodos(initalTodos));
+var initialTodos = TodoAPI.getTodos();
+store.dispatch(actions.addTodos(initialTodos));
 
 // Load foundation
 $(document).foundation();
