@@ -1,8 +1,9 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+var TestUtils = require('react-addons-test-utils');
 var expect = require('expect');
 var $ = require('jquery');
-var TestUtils = require('react-addons-test-utils');
+
 
 import * as actions from 'actions';
 import {Todo} from 'Todo';
@@ -19,7 +20,7 @@ describe('Todo', () => {
       completed: true
     };
     var action = actions.startToggleTodo(todoData.id, !todoData.completed);
-    
+
     var spy = expect.createSpy();
     var todo = TestUtils.renderIntoDocument(<Todo {...todoData} dispatch={spy}/>);
     var $el = $(ReactDOM.findDOMNode(todo));

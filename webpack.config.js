@@ -48,7 +48,7 @@ module.exports = {
     root: __dirname,
     modulesDirectories: [
       'node_modules',
-      './app/components/',
+      './app/components',
       './app/api'
     ],
     alias: {
@@ -58,7 +58,7 @@ module.exports = {
       reducers: 'app/reducers/reducers.jsx',
       configureStore: 'app/store/configureStore.jsx'
     },
-    extensions: ['', '.js','.jsx']
+    extensions: ['', '.js', '.jsx']
   },
   module: {
     loaders: [
@@ -77,5 +77,5 @@ module.exports = {
       path.resolve(__dirname, './node_modules/foundation-sites/scss')
     ]
   },
-  devtool: process.env.NODE_ENV ==='production' ? undefined : 'cheap-module-eval-source-map'
+  devtool: process.env.NODE_ENV === 'production' ? undefined : 'cheap-module-eval-source-map'
 };

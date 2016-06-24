@@ -10,7 +10,7 @@ try {
 
   firebase.initializeApp(config);
 } catch (e) {
-  connsole.log("firebase didn't work", e);
+
 }
 
 export var firebaseRef = firebase.database().ref();

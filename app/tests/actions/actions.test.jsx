@@ -2,7 +2,7 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 var expect = require('expect');
 
-import firebase, {firebaseRef} from 'app/firebase';
+import firebase, {firebaseRef} from 'app/firebase/';
 var actions = require('actions');
 
 var createMockStore = configureMockStore([thunk]);
@@ -32,7 +32,7 @@ describe('Actions', () => {
       type: 'ADD_TODO',
       todo: {
         id: '123abc',
-        text: 'Anything',
+        text: 'Anything we like',
         completed: false,
         createdAt: 0
       }
@@ -71,6 +71,7 @@ describe('Actions', () => {
       todos
     };
     var res = actions.addTodos(todos);
+
     expect(res).toEqual(action);
   });
 
@@ -90,14 +91,18 @@ describe('Actions', () => {
 
     beforeEach((done) => {
       var todosRef = firebaseRef.child('todos');
+
       todosRef.remove().then(() => {
         testTodoRef = firebaseRef.child('todos').push();
+
         return testTodoRef.set({
           text: 'Something to do',
           completed: false,
           createdAt: 23453453
         })
-      }).then(() => done()).catch(done);
+      })
+      .then(() => done())
+      .catch(done);
     });
 
     afterEach((done) => {
@@ -113,12 +118,13 @@ describe('Actions', () => {
 
         expect(mockActions[0]).toInclude({
           type: 'UPDATE_TODO',
-          id: testTodoRef.key,
+          id: testTodoRef.key
         });
         expect(mockActions[0].updates).toInclude({
           completed: true
         });
         expect(mockActions[0].updates.completedAt).toExist();
+
         done();
       }, done);
     });
@@ -132,10 +138,10 @@ describe('Actions', () => {
 
         expect(mockActions[0].type).toEqual('ADD_TODOS');
         expect(mockActions[0].todos.length).toEqual(1);
-        expect(mockActions[0].todos[0].text).toEqual('Somthing to do');
-        
+        expect(mockActions[0].todos[0].text).toEqual('Something to do');
+
         done();
-      }, done);
+      }, done)
     });
   });
 });
