@@ -2,10 +2,10 @@ import firebase from 'firebase';
 
 try {
   var config = {
-    apiKey: "AIzaSyBXtkvrzzdd34RqrwGldgTIVqkY2-TUbMU",
-    authDomain: "newman-todo-app.firebaseapp.com",
-    databaseURL: "https://newman-todo-app.firebaseio.com",
-    storageBucket: "newman-todo-app.appspot.com",
+    apiKey: process.env.API_KEY,
+    authDomain: process.env.AUTH_DOMAIN,
+    databaseURL: process.env.DATABASE_URL,
+    storageBucket: process.env.STORAGE_BUCKET,
   };
 
   firebase.initializeApp(config);
